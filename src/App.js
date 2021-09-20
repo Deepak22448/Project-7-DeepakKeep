@@ -4,6 +4,7 @@ import KeepBody from "./components/KeepBody";
 import KeepHead from "./components/KeepHead";
 import Notes from "./components/Notes.js";
 import "./styles.css";
+import Alert from "./components/Alert";
 const App = () => {
   const [inputArray, setInputArray] = useState([]);
   const [mode, setMode] = useState("light");
@@ -63,20 +64,11 @@ const App = () => {
         </div>
       </div>
       {error && (
-        <div className="overlay">
-          <div className="error_container">
-            <div className="errorMsg fw-bolder">
-              Empty note cannot be added..Please write a note to add.
-            </div>
-
-            <i
-              className="fas fa-times errorCancle d-flex justify-content-center align-items-center"
-              onClick={() => {
-                setError(false);
-              }}
-            ></i>
-          </div>
-        </div>
+        <Alert
+          message="Empty note cannot be added..Please write a note to add."
+          setError={setError}
+          mode={mode}
+        />
       )}
     </>
   );
